@@ -1,0 +1,19 @@
+gcloud container clusters get-credentials --zone us-east1-b pe-training-cluster
+
+LoadBalancer
+
+kubectl apply -f deployment.yaml
+
+kubectl expose deployment deployment.yaml anisha-deployment --port=80 --target-port=80 –type=LoadBalancer
+
+kubectl get service anisha-deployment
+
+
+
+NodePort
+
+kubectl expose deployment deployment.yaml anisha-deployment --port=80 --target-port=80 –type=NodePort
+
+ClusterIP
+
+kubectl expose deployment deployment.yaml anisha-deployment --port=80 --target-port=80 –type=ClusterIP

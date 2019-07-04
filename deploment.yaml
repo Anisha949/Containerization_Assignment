@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: anisha-deployment
+spec:
+  replicas: 3
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - image: nginx
+          imagePullPolicy: Always
+          name: flask
+          ports:
+            - containerPort: 8080
